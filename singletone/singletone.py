@@ -39,7 +39,7 @@ class Singleton(metaclass=SingletonMeta):
         """
 
         if self.auth_token is None:
-            self.auth_token = ''.join(choice(ascii_lowercase) for i in range(length))
+            self.auth_token = ''.join([choice(ascii_lowercase) for i in range(length)])
         else:
             print('Вот тут мы пишем в лог, что пользователь нашего класса офигел и у него уже есть токен')
 
@@ -53,7 +53,10 @@ if __name__ == "__main__":
     s2 = Singleton()
 
     if id(s1.auth_token) == id(s2.auth_token):
-        print("Оба объекта имеют одинаковый токен")
+        print('Оба объекта имеют одинаковый токен')
+        print('Токен объекта 1 равен:', s1.auth_token)
+        print('Токен объекта 2 равен:', s2.auth_token)
         print('Да и на самом деле у нас две ссылки на один и тот же объект')
+        print(s1 == s2)
         exit(0)
     print("Всё пропало, шеф!")
